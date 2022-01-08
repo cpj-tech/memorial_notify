@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ../memofy_web/static:/static
+    ports:  
+      - 8080:80
+    depends_on:
+      - https
+
+  https:
+    image: steveltn/https-portal:1
+    container_name: https
+    volumes:
+      - /etc/ssl_certs:/var/lib/https-portal
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      DOMAINS: 'memorial-notify.com -> http://nginx:8080'
+      STAGE: 'production' # Don't use production until staging works
+      # FORCE_RENEW: 'true'
+    depends_on:
+      - django
+
+  django:
+    build: web/.
+    container_name: django
+    ports:
+      - '8080'    
+    expose:
+      - '8001'
+    volumes:
+      - ../memofy_web:/code
+    command: uwsgi --socket :8001 --module memofy_web.wsgi --threads 2
+  
+
+
+  

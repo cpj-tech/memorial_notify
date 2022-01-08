@@ -1,0 +1,14 @@
+# memofy-client
+build/
+node_modules/
+
+# memofy_web
+myenv/
+__pycache__/
+static/
+migrations/
+db.sqlite3
+
+# docker
+ssl_certs/
+.DS_Store/
