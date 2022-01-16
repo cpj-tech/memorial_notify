@@ -111,39 +111,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'memofy_web.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# on github
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'memofy_db',
-        'USER': 'memofy_admin',
-        'PASSWORD': 'memofy_pass',
-        "HOST": 'memofy-web.czz0pzurwr0u.ap-northeast-1.rds.amazonaws.com',
-        "PORT": "3306",
+        'NAME': '<DB_NAMWE>',
+        'USER': '<ADMIN_NAME>',
+        'PASSWORD': '<DB_PASSWORD>',
+        "HOST": '<DB_HOST>',
+        "PORT": "<DB_PORT>",
     }
 }
 
-# on local develop
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'memorial_notify',
-#         'USER': 'root',
-#         'PASSWORD': 'kyfg0318',
-#         "HOST": '',
-#         "PORT": "",
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -197,8 +175,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'toosoccer.no2111@gmail.com'
-EMAIL_HOST_PASSWORD = 'ulmzdiabnonuylyo'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
 LOGGING = {
